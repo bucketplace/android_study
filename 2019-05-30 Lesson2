@@ -1,0 +1,241 @@
+# 02. Layouts
+
+## 1. Art with Aleks
+
+- vertical.. horizontal.. 한번에  같이 쓸 순 없을까~ 
+ConstratinLayout으로 진정한 예술을 할 수 있다.ㅎㅎ
+
+## 2. Introduction
+
+- 두개의 토이앱을 만들거다.
+- 1. 자기소개 앱
+- 2. 화면에 구성요소를 표현하는 앱
+
+## 3. View Groups & View Hierarchy
+
+- 화면에 표시하는 컴포넌트들은 View의 child 이며, 많은 속성을 공유한다.
+    - ex) width, height, background etc
+- 크기 단위는 DP를 사용한다 혹은 dip
+    - Density Independent Pixel
+    - 160dpi 화면에서 1dp는 1px
+    480dpi 화면에서는 1dp는 4px
+- LinearLayout
+    - Horizontal, Vertical 설명
+- ViewGroup / View Hierarchy 설명
+- View 컴포넌트들의 중첩이 많아질 수록 연산이 많이 들어감
+이를 ConstraintLayout을 이용하여 flat view로 구현할 수 있도록함
+- Constraint Layout
+A ViewGroup where elements can be arranged freely, are placed by the system based on constraints, and may adapt in size based on screen size and orientation.
+
+## 4. Exercise: Create the AboutMe Project
+
+- 프로젝트 생성
+
+## 5. Exercise: Create the Layout File
+
+- Layout XML 파일 생성
+
+## 6. Layout Editor Basics
+
+- 레이아웃 에디터 화면 구조 설명
+    - 메인 화면에서 실제 화면과 화면 구조 설계도를 볼 수 있음
+    - 하단 다지인 탭 혹은 text 탭을 눌러 레이아웃을 수정 가능
+    - 좌측 하단 컴포넌트 트리를 볼 수 있음.
+    - 우측 Attribute 팬에서는 각 컴포넌트의 속성을 쉽게 지정 가능
+
+## 7. Adding a TextView
+
+- 레이아웃 에디터를 이용한 TextView 추가 및 속성 지정
+    - id
+    - layout_width
+    - layout_height
+    - text
+    - textSize
+    - textColor
+    - textAlignment
+    - Hardcoding warning → Resource Editor를 이용하여 추가.
+- Activity에서 setContentView를 이용한 Layout Inflation
+
+## 8. Styling a TextView
+
+- Padding
+- Margin
+- Font
+- View의 속성들을 Sytle로 내보내기
+
+## 9. Exercise: Add a TextView, ImageView, and Styling
+
+- ImageView 추가 및 Styleing
+
+## 10. Exercise: Add a ScrollView
+
+- ScrollView를 이용한 장문 TextView 스크롤 처리
+
+## 11. Adding an EditText for Text Input
+
+- EditText 추가
+- Style 적용, InputType 설정, EditText 설정
+
+## 12. Adding a Done Button to Accept Text Input
+
+- Done 버튼 추가
+- 출력 TextView 추가
+- Visibility 속성 설명
+
+## 13. Exercise: Add EditText, Done Button, ClickHandler
+
+- 12강에 이어 ClickListner 추가
+- 클릭 이벤트 추가
+- 코드로 Visibility 관리, Keyboard 닫기( input method manager )
+
+## 14. Data Binding
+
+- DataBinding 설명
+- 기존 findViewById 함수는 런타임에 처리되므로 크고 deep한 경우 성능 문제가 있음.
+- DataBinding은 컴파일시 헬퍼 클래스를 생성한다.
+
+## 15. Data Binding: Views
+
+- While using data binding is not mandatory for simple apps, it is a recommended pattern that makes your code simpler and easier to read.
+- Data Binding 활성화
+
+        dataBinding{
+            enabled = true
+        }
+
+- Layout XML 설정
+    - layout 태그로 감싸기
+    - Namespace 정의
+- Activity 코드에서 사용
+    - DataBinding Class가 컴파일시 자동 생성됨(빌드 필요)
+    - DataBindingUtil을 이용하여 contentView를 세팅
+    - DataBinding을 이용해 View 호출 및 핸들러 세팅
+    - DataBinding을 이용해 text를 세팅 후 invalidateAll()을 호출
+
+## 16. Data Binding: Data
+
+- 이름,닉네임의 클래스 생성
+- Layout 설정
+    - Data 태그를 사용하여 Binding Class 정의
+
+        <data>
+        	<variable
+        	name="myName"
+        	type="com.example.aboutme.MyName"/>
+        </data>
+
+    - 변수를 View의 값으로 binding
+
+            android:text="@={[myName.name](http://myname.name/)}"
+            
+            android:visibility='@{"N".equals(model.OPTION2_YN)?View.VISIBLE:View.GONE}'>
+            
+            android:text='@{model.BUY_PRICE == null ? String.format("%,d",phoneModel.b_price) : String.format("%,d", Integer.parseInt(model.BUY_PRICE))}'/>
+
+- 코드 바인딩
+    - 객체 생성 및 객체 바인딩
+    binding.myName = MyName("Alex")
+
+## 17. Exercise: Implement Data Binding
+
+- 앞선 강좌 자습
+
+## 18. Google Interview: John Hoford and Nicolas Roard
+
+- ContraintLayout / MotionLayout
+
+## 19. Constraint Layout: ColorMyViews App
+
+- Advantages
+    - You can make it responsive to screens and resolutions
+    - Usually flatter view hierarchy
+    - Optimized for laying out its views
+    - Free-form - place views anywhere, and the editor helps add constraints
+
+## 20. Creating ColorMyViews Project
+
+- 프로젝트 생성
+
+## 21. Exercise: Create ColorMyViews Project and One Box
+
+- LayoutEditer 기반 ConstraintLayout 속성 설명
+- 리소스 옵션 기능으로 Font를 추가할 수 있음
+
+## 22. Constraints
+
+- bias 설명
+
+## 23. Ratios
+
+- constraintDimensionRatio 설명
+
+## 24. Chaining
+
+![](Untitled-414ebc6a-b62d-43aa-88a4-32ebfd94f352.png)
+
+- Spred Chain
+
+![](Untitled-328e40d1-2b9e-4418-b8af-f957d3daf7bd.png)
+
+- Spred Inside Chain
+
+![](Untitled-e1994b0a-ba41-41df-b1b9-c8edf6b7c2a3.png)
+
+- Weighted Chain
+
+![](Untitled-0c0467fa-2464-4604-ad7b-9891b34805df.png)
+
+- Packed Chain
+
+![](Untitled-9e0a642e-920e-4aec-9f70-07df660f073d.png)
+
+- Packed Chain with Bias
+
+![](Untitled-a2c1050c-62e7-4204-9c76-35307b772eb2.png)
+
+## 25. Adding Box Two Below Box One
+
+- View 추가 및 위치 설정
+- top to bottom of
+- start to start of
+
+## 26. Adding Three Aligned Boxes
+
+- View 3개 추가 및 위지 설정
+- Chaning 설정
+- match_constraint
+
+## 27. Exercise: Add Aligned Boxes with Click Handlers
+
+- 여러 뷰에 동일한 핸들러 적용
+
+    val clickableViews: List<View> = listOf(box_one_text,box_two_text,box_three_text)
+    for(item in clickableViews){
+    	item.setOnCLickListener{ method(it) }
+    }
+
+- 각 버튼 클릭시 배경 색 변경
+
+## 28. Baseline Constraint
+
+- 베이스라인을 이용한 레이아웃 관계 생성
+
+## 29. Exercise: Add Baseline Constraint and Button Chain
+
+- 3개의 버튼을 추가.
+- Baseline, Constraint 설정
+- 클릭 이벤트로 버튼의 색상 변경
+
+## 30. Where to Go Next?
+
+We talked about ART.
+
+It turns out that going from demo to art can take a chunk of work … and is a lot of fun. Think about this simple game. Start from the final code in the repo. How can you make this a complete game?
+
+Here are some ideas:
+
+Use images instead of colors, and reveal the images. You can even create a picture memory game!
+Use one image and break it up into sections to reveal over time.
+Get rid of the text and buttons and just fill the screen with boxes. Implement one of Piet Mondrian's Paintings!
+Take the AboutMe app and remake it using ConstraintLayout with a more creative arrangement of information.
+Style the app to uniquely represent you and your personality.
